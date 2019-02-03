@@ -1,56 +1,62 @@
-import React, { Component } from 'react'
-import { Drawer, List, ListItem, ListSubheader, ListItemIcon, ListItemText } from '@material-ui/core'
-import SendIcon from '@material-ui/icons/Send';
+import React from 'react';
+import { scroller } from 'react-scroll';
+import { Drawer, List, ListItem, ListSubheader, ListItemIcon, ListItemText } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
+import SearchIcon from '@material-ui/icons/Search';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 
-class Sidebar extends Component {
-    render() {
+const Sidebar = (props) => {
+
+   const scrollToElement = (element) =>{
+        scroller.scrollTo((element),{
+            duration:1500,
+            delay:100,
+            smooth:true,
+            offset:-80
+        });
+        props.onClose(false)
+    }
+
         return (
             <Drawer
                 anchor="right"
-                open={this.props.open}
-                onClose={() => this.props.onClose(false)}
+                open={props.open}
+                onClose={() => props.onClose(false)}
             >
                 <List
                     component="nav"
                     subheader={<ListSubheader component="div">Nested List Items</ListSubheader>}>
-                    <ListItem button onClick={() => console.log("Featured")}>
+                    <ListItem button onClick={() => scrollToElement("venue-info")}>
                         <ListItemIcon>
-                            <SendIcon />
-                        </ListItemIcon>
-                        <ListItemText inset primary="Sent mail" />
-                    </ListItem>
-
-                    <ListItem button onClick={() => console.log("Venue Info")}>
-                        <ListItemIcon>
-                            <SendIcon />
+                            <MenuIcon />
                         </ListItemIcon>
                         <ListItemText inset primary="Venue Info" />
                     </ListItem>
 
-                    <ListItem button onClick={() => console.log("Highlights")}>
+                    <ListItem button onClick={() => scrollToElement('highlight')}>
                         <ListItemIcon>
-                            <SendIcon />
+                            <SearchIcon />
                         </ListItemIcon>
                         <ListItemText inset primary="Highlights" />
                     </ListItem>
 
-                    <ListItem button onClick={() => console.log("Pricing")}>
+                    <ListItem button onClick={() => scrollToElement('pricing')}>
                         <ListItemIcon>
-                            <SendIcon />
+                            <AccountCircle />
                         </ListItemIcon>
                         <ListItemText inset primary="Pricing" />
                     </ListItem>
 
-                    <ListItem button onClick={() => console.log("Location")}>
+                    <ListItem button onClick={() => scrollToElement('location')}>
                         <ListItemIcon>
-                            <SendIcon />
+                            <NotificationsIcon />
                         </ListItemIcon>
                         <ListItemText inset primary="Location" />
                     </ListItem>
                 </List>
             </Drawer>
         )
-    }
 }
 
 export default Sidebar;

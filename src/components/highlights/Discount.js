@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Fade from 'react-reveal/Fade';
 import Slide from 'react-reveal/Slide';
+import Buttons from '../utiles/Buttons';
 
  class Discount extends Component {
     state = {
@@ -38,7 +39,7 @@ import Slide from 'react-reveal/Slide';
            <div className="discount_description">
             <h3>Purchase ticket before 20th FEB</h3>
             <p>Disney World tickets are available discounted year-round <br/>First Time <strong>Texas Resident</strong> Platinum Pass: $797.69 for all ages (3+), including tax ($154.43 off the regular price)</p>
-            <div>Button</div>
+            <div><Buttons/></div>
            </div>
 
            </Slide>
